@@ -8,7 +8,6 @@ from abc import ABC, abstractmethod
 
 
 class SmartPhoneFactory(ABC):
-
     @abstractmethod
     def create_ap(self, battery: Battery) -> AP:
         pass
@@ -19,7 +18,6 @@ class SmartPhoneFactory(ABC):
 
 
 class GalaxyFactory(SmartPhoneFactory):
-
     def create_ap(self, battery: Battery) -> AP:
         return GalaxyAP(battery)
 
@@ -28,7 +26,6 @@ class GalaxyFactory(SmartPhoneFactory):
 
 
 class IPhoneFactory(SmartPhoneFactory):
-
     def create_ap(self, battery: Battery) -> AP:
         return IPhoneAP(battery)
 
@@ -42,7 +39,6 @@ class IPhoneFactory(SmartPhoneFactory):
 
 
 class AP(ABC):
-
     @abstractmethod
     def process(self) -> None:
         pass
@@ -86,7 +82,6 @@ class IPhoneAP(AP):
 
 
 class Battery(ABC):
-
     @abstractmethod
     def get_power(self) -> int:
         pass
