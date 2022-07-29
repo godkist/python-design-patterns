@@ -36,10 +36,10 @@ def client_code(switch: Switch) -> None:
 
 
 if __name__ == "__main__":
-    appliance = TV()
-    switch = RemoteControl(appliance)
-    client_code(switch)
+    tv = TV()
+    control = RemoteControl(tv)
+    client_code(control)
 
-    appliance = VacuumCleaner()
-    switch = Switch(appliance)
+    vc = VacuumCleaner()
+    switch = Switch(vc)
     client_code(switch)
