@@ -1,12 +1,12 @@
 from __future__ import annotations
 from abc import ABC, abstractmethod
-from typing import Any
+from typing import Any, List, Optional
 
 
 class Builder(ABC):
     @property
     @abstractmethod
-    def product(self) -> None:
+    def product(self) -> Any:
         pass
 
     @abstractmethod
@@ -47,7 +47,7 @@ class ConcreteBuilder(Builder):
 
 class Product:
     def __init__(self) -> None:
-        self.features = []
+        self.features: List[Any] = []
 
     def add(self, feature: Any) -> None:
         self.features.append(feature)
@@ -57,16 +57,12 @@ class Product:
 
 
 class Director:
-    def __init__(self) -> None:
-        self._builder = None
+    def __init__(self, builder: Builder) -> None:
+        self._builder = builder
 
     @property
     def builder(self) -> Builder:
         return self._builder
-
-    @builder.setter
-    def builder(self, builder: Builder) -> None:
-        self._builder = builder
 
     def build_minimal_viable_product(self) -> None:
         self.builder.implement_feature_a()
@@ -78,9 +74,8 @@ class Director:
 
 
 if __name__ == '__main__':
-    director = Director()
     builder = ConcreteBuilder()
-    director.builder = builder
+    director = Director(builder)
 
     print('--- Standard basic product: ')
     director.build_minimal_viable_product()
