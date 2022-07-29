@@ -10,8 +10,6 @@ class ConcreteComponent(Component):
 
 
 class Decorator(Component):
-    _component: Component = None
-
     def __init__(self, component: Component) -> None:
         self._component = component
 
