@@ -4,7 +4,7 @@ from typing import Any
 
 
 class ReverseIterator(Iterator):
-    _position: int = None
+    _position: int = 0
     _reverse: bool = False
 
     def __init__(self, collection: WordsCollection, reverse: bool = False) -> None:
