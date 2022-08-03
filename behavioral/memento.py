@@ -3,11 +3,10 @@ from abc import ABC, abstractmethod
 from datetime import datetime
 from random import sample
 from string import ascii_letters
+from typing import List
 
 
 class Originator:
-    _state = None
-
     def __init__(self, state: str) -> None:
         self._state = state
         print(f"Originator: My initial state is: {self._state}")
@@ -59,7 +58,7 @@ class ConcreteMemento(Memento):
 
 class Caretaker:
     def __init__(self, originator: Originator) -> None:
-        self._mementos = []
+        self._mementos : List[Memento] = []
         self._originator = originator
 
     def backup(self) -> None:
