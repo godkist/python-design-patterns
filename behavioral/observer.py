@@ -6,6 +6,10 @@ from typing import List
 
 class Subject(ABC):
     @abstractmethod
+    def state(self):
+        pass
+
+    @abstractmethod
     def attach(self, observer: Observer) -> None:
         pass
 
@@ -19,8 +23,12 @@ class Subject(ABC):
 
 
 class ConcreteSubject(Subject):
-    _state: int = None
-    _observers: List[Observer] = []
+    def __init__(self):
+        self._state: int = 0
+        self._observers: List[Observer] = []
+
+    def state(self):
+        return self._state
 
     def attach(self, observer: Observer) -> None:
         print("Subject: Attached an observer.")
@@ -50,13 +58,13 @@ class Observer(ABC):
 
 class ConcreteObserverA(Observer):
     def update(self, subject: Subject) -> None:
-        if subject._state < 3:
+        if subject.state() < 3:
             print("ConcreteObserverA: Reacted to the event")
 
 
 class ConcreteObserverB(Observer):
     def update(self, subject: Subject) -> None:
-        if subject._state == 0 or subject._state >= 2:
+        if subject.state() == 0 or subject.state() >= 2:
             print("ConcreteObserverB: Reacted to the event")
 
 
