@@ -33,7 +33,7 @@ class ConcreteStrategyA(Strategy):
 
 
 class ConcreteStrategyB(Strategy):
-    def do_algorithm(self, data: List) -> List:
+    def do_algorithm(self, data: List) -> reversed:
         return reversed(sorted(data))
 
 
